@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Hierarchy test</title>
+		<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+		<script type="text/javascript" src="jquery.sortableinput.js"></script>
+	</head>
+	<body>
+		<p>Select staff for the away team</p>
+		<ul id="away_team_selection">
+			<li class="selectable">
+				<span class="handle" style="color:lightgrey; vertical-align:middle;">[move]</span>
+				<select name="away_team" data-name-template="away_team[%index%][name]">
+					<option value="">----</option>
+					<option>Beverly</option>
+					<option selected>Data</option>
+					<option>Deanna</option>
+					<option>Georgi</option>
+					<option>Jean-Luc</option>
+					<option>Wesley</option>
+					<option>Will</option>
+					<option>Worf</option>
+				</select>
+				<input type="text" name="away_team" data-name-template="away_team[%index%][role]" placeholder="role" value="Hold tricorder" />
+				<a class="button button-small away_team_delete button-error" title="Delete" href="">[delete]</a>
+			</li>
+			<li class="selectable">
+				<span class="handle" style="color:lightgrey; vertical-align:middle;">[move]</span>
+				<select name="away_team" data-name-template="away_team[%index%][name]">
+					<option value="">----</option>
+					<option>Beverly</option>
+					<option>Data</option>
+					<option>Deanna</option>
+					<option>Georgi</option>
+					<option>Jean-Luc</option>
+					<option>Wesley</option>
+					<option selected>Will</option>
+					<option>Worf</option>
+				</select>
+				<input type="text" name="away_team" data-name-template="away_team[%index%][role]" placeholder="role" value="Look dashing" />
+				<a class="button button-small away_team_delete button-error" title="Delete" href="">[delete]</a>
+			</li>
+			<li>
+				<a class="button button-small away_team_add" title="Insert multiple" href=""> Add new away team member</a>
+			</li>
+		</ul>
+		<button id="do-plugin">Activate plugin!</button>
+		<script type="text/javascript">
+		$( document ).ready(function() {
+			$('#do-plugin').on('click', function(ev){
+				ev.preventDefault();
+
+				$('#away_team_selection').sortableInputList({
+					add_selector: ".away_team_add",
+					delete_selector: ".away_team_delete",
+					item_selector: "li.selectable",
+					sort_options: {
+						handle: ".handle"
+					}
+				});
+				
+				$(this).remove();
+
+			});
+		});
+		</script>
+	</body>
+</html>
