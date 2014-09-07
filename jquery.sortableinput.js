@@ -1,4 +1,13 @@
-(function ( $ ) {
+/*
+ * jquery sortable input plugin v0.1.0
+ * https://github.com/drkane/jquery-sortableinput
+ *
+ * Copyright (c) 2014 David Kane. All rights reserved. 
+ * Released under the GPL
+ * 
+ * Date: 2014-09-07
+ */
+ (function ( $ ) {
 
 	$.fn.sortableInputList = function( options ) {
 	
