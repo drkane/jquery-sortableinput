@@ -22,7 +22,10 @@
         }, options );
 		
 		var sort_options = $.extend({
-			items: config.item_selector
+			items: config.item_selector,
+			change: function( ev, ui ){
+				refresh_sortable();
+			}
 		}, config.sort_options );
 		
 		var home_element = this;
