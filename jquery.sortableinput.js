@@ -1,5 +1,5 @@
 /*
- * jquery sortable input plugin v0.1.0
+ * jquery sortable input plugin v0.2.0
  * https://github.com/drkane/jquery-sortableinput
  *
  * Copyright (c) 2014 David Kane. All rights reserved. 
@@ -22,7 +22,10 @@
         }, options );
 		
 		var sort_options = $.extend({
-			items: config.item_selector
+			items: config.item_selector,
+			change: function( ev, ui ){
+				refresh_sortable();
+			}
 		}, config.sort_options );
 		
 		var home_element = this;
