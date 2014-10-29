@@ -23,7 +23,7 @@
 		
 		var sort_options = $.extend({
 			items: config.item_selector,
-			change: function( ev, ui ){
+			update: function( ev, ui ){
 				refresh_sortable();
 			}
 		}, config.sort_options );
