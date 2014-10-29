@@ -59,15 +59,30 @@
 			$( home_element ).sortable( sort_options );
 		}
 		
+		// refresh the sortable when any of the items are changed
+		this.on( "change", config.item_selector + " > input , " + config.item_selector + " > textarea , " + config.item_selector + " > select", function(){
+			refresh_sortable();
+		});
+		
 		// refresh the list
 		// - replaces the "name" attribute with a template, if the template is present
+		// - the template is stored in the data-name-template of any inputs, textareas or selects
+		// - the value of any input, textarea or select can be used in name-templates by specifying a data-key on the option and then surrounding with %data-key% in the template
 		var refresh_sortable = function() {
 		
 			$(home_element).find(config.item_selector).each( function( item_index ){
+				var replacements = { 'index': item_index };
+				$(this).find('input, textarea, select').each( function( index ) {
+					if( $(this).data('key') ){
+						replacements[$(this).data('key')] = $(this).val();
+					}
+				});
 				$(this).find('input, textarea, select').each( function( index ) {
 					if( $(this).data('name-template') ){
-						var name_template = $(this).data('name-template');
-						var new_name = name_template.replace( '%index%', item_index );
+						var new_name = $(this).data('name-template');
+						$.each(replacements, function( k, v){
+							new_name = new_name.replace( '%' + k + '%', v );
+						});
 						$(this).attr("name", new_name );
 					}
 				});
