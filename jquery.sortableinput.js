@@ -60,7 +60,7 @@
 		}
 		
 		// refresh the sortable when any of the items are changed
-		this.on( "change", config.item_selector + " > input , " + config.item_selector + " > textarea , " + config.item_selector + " > select", function(){
+		this.on( "change", config.item_selector + " input , " + config.item_selector + " textarea , " + config.item_selector + " select", function(){
 			refresh_sortable();
 		});
 		
